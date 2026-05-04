@@ -14,7 +14,7 @@ version = '0.0.1'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(17)
   }
 }
 
@@ -34,7 +34,10 @@ sourceSets {
       runtimeClasspath += main.output
       srcDir file('src/integrationTest/java')
     }
-    resources.srcDir file('src/integrationTest/resources')
+    resources {
+      srcDir file('src/integrationTest/resources')
+      srcDir file('src/test/resources')
+    }
   }
 
   smokeTest {
@@ -52,7 +55,7 @@ configurations {
   functionalTestRuntimeOnly.extendsFrom runtimeOnly
 
   integrationTestImplementation.extendsFrom testImplementation
-  integrationTestRuntimeOnly.extendsFrom runtimeOnly
+  integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
 
   smokeTestImplementation.extendsFrom testImplementation
   smokeTestRuntimeOnly.extendsFrom runtimeOnly
@@ -154,7 +157,12 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.8.17'
+  implementation group: 'org.flywaydb', name: 'flyway-core'
+  implementation group: 'org.flywaydb', name: 'flyway-database-postgresql'
+  runtimeOnly group: 'org.postgresql', name: 'postgresql'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.1.9'
 
@@ -173,6 +181,7 @@ dependencies {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
+  testRuntimeOnly group: 'com.h2database', name: 'h2'
 }
 
 mainClassName = 'uk.gov.hmcts.reform.dev.Application'
