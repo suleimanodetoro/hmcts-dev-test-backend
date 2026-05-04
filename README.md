@@ -30,7 +30,7 @@ A health endpoint is available at `http://localhost:4000/health`.
 docker compose up -d
 ```
 
-This starts PostgreSQL on `localhost:5432` with database, user and password all set to `tasks`. Flyway applies the schema migration automatically when the application starts.
+This starts PostgreSQL on `localhost:5433` with database, user and password all set to `tasks`. Host port `5433` is used in preference to `5432` so that the container does not clash with a developer machine that already runs PostgreSQL locally. Flyway applies the schema migration automatically when the application starts.
 
 To stop and remove the volume:
 
@@ -75,13 +75,13 @@ The full check (tests, integration tests, checkstyle):
 
 ## Project layout
 
-- `controllers/` — REST controllers
-- `services/` — transactional business logic
-- `repositories/` — Spring Data JPA repositories
-- `models/` — JPA entities and the `TaskStatus` enum
-- `dto/` — request and response payloads
-- `exceptions/` — domain exceptions and the global exception handler
-- `db/migration/` — Flyway SQL migrations
+- `controllers/`: REST controllers
+- `services/`: transactional business logic
+- `repositories/`: Spring Data JPA repositories
+- `models/`: JPA entities and the `TaskStatus` enum
+- `dto/`: request and response payloads
+- `exceptions/`: domain exceptions and the global exception handler
+- `db/migration/`: Flyway SQL migrations
 
 ## Assumptions
 
