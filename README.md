@@ -2,6 +2,8 @@
 
 A small Spring Boot service for caseworker task management. It exposes a JSON API for creating, listing, retrieving, status-updating and deleting tasks, persisted in PostgreSQL.
 
+The companion GOV.UK web interface lives at [hmcts-dev-test-frontend](https://github.com/suleimanodetoro/hmcts-dev-test-frontend).
+
 ## Endpoints
 
 | Method | Path                  | Description                          |
@@ -52,6 +54,10 @@ Build a runnable jar:
 ./gradlew bootJar
 java -jar build/libs/test-backend.jar
 ```
+
+## Run the frontend
+
+The web interface is a separate Express and Nunjucks application. Clone and run [hmcts-dev-test-frontend](https://github.com/suleimanodetoro/hmcts-dev-test-frontend) and follow its README. By default it expects this backend on `http://localhost:4000`.
 
 ## Run the tests
 
