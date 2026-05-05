@@ -6,6 +6,9 @@ on:
 
 jobs:
   publish-openapi:
+    # Skip on forks: the reusable workflow needs an HMCTS-only secret and
+    # a publisher test class that lives in the canonical repository.
+    if: github.repository_owner == 'hmcts'
     uses: hmcts/workflow-publish-openapi-spec/.github/workflows/publish-openapi.yml@v1
     secrets:
       SWAGGER_PUBLISHER_API_TOKEN: ${{ secrets.SWAGGER_PUBLISHER_API_TOKEN }}
