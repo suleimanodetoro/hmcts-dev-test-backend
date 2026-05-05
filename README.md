@@ -46,7 +46,7 @@ docker compose down -v
 ./gradlew bootRun
 ```
 
-The service listens on port `4000` by default. Override the port with `SERVER_PORT`. Database connection details can be overridden via `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER_NAME`, `DB_PASSWORD` and `DB_OPTIONS`.
+The service listens on port `4000` by default. Override the port with `SERVER_PORT`. Database connection details can be overridden via `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER_NAME`, `DB_PASSWORD` and `DB_OPTIONS`. See `.env.example` for the full list of overridable variables; copy it to `.env` if you want to set them locally.
 
 Build a runnable jar:
 

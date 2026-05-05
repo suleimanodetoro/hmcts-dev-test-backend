@@ -26,3 +26,4 @@ applicationinsights-agent-*.jar
 
 .env
 .env.*
+!.env.example
